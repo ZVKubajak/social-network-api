@@ -27,3 +27,5 @@ const thoughtSchema = new Schema<IThought>({
     // *
   }
 });
+
+const Thought = model('Thought', thoughtSchema);
