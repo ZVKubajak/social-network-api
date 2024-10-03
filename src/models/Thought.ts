@@ -1,31 +1,45 @@
 import { Schema, model, Document, ObjectId } from "mongoose";
+import { dateFormat } from "../utils/dateFormat.ts";
 
 interface IThought extends Document {
   thoughtText: string;
-  createdAt: Date;
+  createdAt: Schema.Types.Date;
   username: string;
-  reactions: [];
+  reactions: []; // [typeof reactionSchema]
 }
 
-const thoughtSchema = new Schema<IThought>({
-  thoughtText: {
-    type: String,
-    required: true,
-    minLength: 1,
-    maxLength: 280,
+const thoughtSchema = new Schema<IThought>(
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      minLength: 1,
+      maxLength: 280,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp: any) => dateFormat(timestamp),
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    reactions: {
+      // * reaction model here
+    },
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    // * get: (timestamp: Date) => timestamp.toLocaleString(),
-  },
-  username: {
-    type: String,
-    required: true,
-  },
-  reactions: {
-    // *
+  {
+    toJSON: {
+      getters: true,
+    },
+    id: false,
+    timestamps: true,
   }
-});
+);
 
-const Thought = model('Thought', thoughtSchema);
+const Thought = model("Thought", thoughtSchema);
+
+// Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+
+export default Thought;
