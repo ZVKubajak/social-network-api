@@ -1,5 +1,5 @@
-import { Schema, model, Document, ObjectId } from "mongoose";
-import { dateFormat } from "../utils/dateFormat.ts";
+import { Schema, model, Document,  } from "mongoose";
+import { dateFormat } from "../utils/dateFormat";
 
 interface IThought extends Document {
   thoughtText: string;

@@ -1,5 +1,5 @@
 import express from "express";
-import databaseConnection from "./config/connection.ts";
+import databaseConnection from "./config/connection";
 import mongoose from "mongoose";
 
 const PORT = process.env.PORT || 3001;
