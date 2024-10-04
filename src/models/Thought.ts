@@ -1,11 +1,13 @@
-import { Schema, model, Document, ObjectId } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 import { dateFormat } from "../utils/dateFormat";
+
+import reactionSchema from "./Reaction";
 
 interface IThought extends Document {
   thoughtText: string;
   createdAt: Schema.Types.Date;
   username: string;
-  reactions: []; // [typeof reactionSchema]
+  reactions: [typeof reactionSchema];
 }
 
 const thoughtSchema = new Schema<IThought>(
@@ -26,7 +28,7 @@ const thoughtSchema = new Schema<IThought>(
       required: true,
     },
     reactions: {
-      // * reaction model here
+      reactionSchema
     },
   },
   {
@@ -37,6 +39,10 @@ const thoughtSchema = new Schema<IThought>(
     timestamps: true,
   }
 );
+
+thoughtSchema.virtual("reactionCount").get(function () {
+  return this.reactions.length;
+});
 
 const Thought = model("Thought", thoughtSchema);
 
