@@ -20,4 +20,4 @@ export const dateFormat = (timestamp: any): string => {
   const day = date.getDate();
 
   return `${month} ${day}, ${year}`;
-}
+};
