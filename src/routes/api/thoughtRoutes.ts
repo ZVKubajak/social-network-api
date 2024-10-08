@@ -6,11 +6,9 @@ import {
   createThought,
   updateThought,
   deleteThought,
-} from "../../controllers/thoughtController.js";
-import {
   addReaction,
   removeReaction,
-} from "../../controllers/userController.js";
+} from "../../controllers/thoughtController.js";
 
 router.route("/").get(getThoughts).post(createThought);
 

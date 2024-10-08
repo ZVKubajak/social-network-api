@@ -51,6 +51,7 @@ export const updateThought = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };
 
@@ -68,10 +69,11 @@ export const deleteThought = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };
 
-// * -- Reaction Methods -- * //
+// * -- Reaction Handlers -- * //
 
 export const addReaction = async (req: Request, res: Response) => {
   try {
@@ -89,6 +91,7 @@ export const addReaction = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };
 
@@ -108,5 +111,6 @@ export const removeReaction = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };

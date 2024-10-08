@@ -49,6 +49,7 @@ export const updateUser = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };
 
@@ -64,6 +65,7 @@ export const deleteUser = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };
 
@@ -85,6 +87,7 @@ export const addFriend = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };
 
@@ -104,5 +107,6 @@ export const removeFriend = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json(error);
+    return;
   }
 };

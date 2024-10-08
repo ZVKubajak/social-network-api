@@ -1,7 +1,7 @@
 import mongoose, { Schema, model, Document } from "mongoose";
 import { dateFormat } from "../utils/dateFormat";
 
-interface IReaction extends Document {
+export interface IReaction extends Document {
   reactionId: Schema.Types.ObjectId;
   reactionBody: string;
   username: string;
@@ -38,6 +38,4 @@ const reactionSchema = new Schema<IReaction>(
   }
 );
 
-const Reaction = model("Reaction", reactionSchema);
-
-export default Reaction;
+export default reactionSchema;

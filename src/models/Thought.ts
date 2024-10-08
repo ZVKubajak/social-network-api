@@ -1,13 +1,13 @@
 import { Schema, model, Document } from "mongoose";
 import { dateFormat } from "../utils/dateFormat";
 
-import reactionSchema from "./Reaction";
+import reactionSchema, { IReaction } from "./Reaction";
 
 interface IThought extends Document {
   thoughtText: string;
   createdAt: Schema.Types.Date;
   username: string;
-  reactions: [typeof reactionSchema];
+  reactions: IReaction[];
 }
 
 const thoughtSchema = new Schema<IThought>(
@@ -27,9 +27,9 @@ const thoughtSchema = new Schema<IThought>(
       type: String,
       required: true,
     },
-    reactions: {
-      reactionSchema,
-    },
+    reactions: [
+      reactionSchema, // .populate()
+    ],
   },
   {
     toJSON: {
