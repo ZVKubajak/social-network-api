@@ -18,10 +18,7 @@ const userSchema = new Schema<IUser>({
     type: String,
     required: true,
     unique: true,
-    validate: {
-      validator: () => Promise.resolve(false),
-      message: "Email validation failed",
-    },
+    match: [/.+@.+\..+/, 'Must match an email address!'],
   },
   thoughts: [
     {

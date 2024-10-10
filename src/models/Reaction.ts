@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { dateFormat } from "../utils/dateFormat";
+import { dateFormat } from "../utils/dateFormat.js";
 
 export interface IReaction extends Document {
   reactionId: Schema.Types.ObjectId;
